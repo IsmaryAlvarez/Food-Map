@@ -39,8 +39,8 @@ p{
 	float: right;
 }
 #imagenes{
-    outline: 1px solid white;
-    height: 100px;
+outline: 1px solid white;
+    height: 150px;
     padding: 10px;
 }
 #imagenes img{
@@ -48,6 +48,18 @@ p{
 	width: 100%;
 }
 
+
+#logo{
+
+    height: 25px;
+    width: 0px;
+    outline: 3px solid white;
+    margin-top: 8px;
+}
+
+#logos{
+    padding: 0;
+}
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
      #map {

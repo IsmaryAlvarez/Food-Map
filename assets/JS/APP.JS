@@ -11,13 +11,13 @@ $.fn.center = function () {
   return this;
 }
 
-
 $("#overlay").show();
 $("#overlay-content").show().center();
 
 setTimeout(function(){    
   $("#overlay").fadeOut();
 }, 2000);
+
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById("map"), {
@@ -52,7 +52,9 @@ function initMap() {
   infowindow = new google.maps.InfoWindow();
   var service = new google.maps.places.PlacesService(map);
 
-$('#restaurantes').click(function() {
+$('#restaurantes').click(function(showrest) {
+    $('.inicial').hide();
+    $('.rest').show();
     service.nearbySearch({
     location: pyrmont,
     radius: 1000,
@@ -61,6 +63,12 @@ $('#restaurantes').click(function() {
 });
 
 $('#pastelerias').click(function() {
+    $('.inicial').hide();
+    $('.rest').hide();
+    $('.bake').show();
+    $('.deli').hide();
+    $('.take').hide();
+    $('.cafe').hide();
     service.nearbySearch({
     location: pyrmont,
     radius: 1000,
@@ -69,6 +77,12 @@ $('#pastelerias').click(function() {
 });
 
 $('#delivery').click(function() {
+    $('.inicial').hide();
+    $('.rest').hide();
+    $('.bake').hide();
+    $('.deli').show();
+    $('.take').hide();
+    $('.cafe').hide();
     service.nearbySearch({
     location: pyrmont,
     radius: 1000,
@@ -77,6 +91,12 @@ $('#delivery').click(function() {
 });
 
 $('#llevar').click(function() {
+  $('.inicial').hide();
+    $('.rest').hide();
+    $('.bake').hide();
+    $('.deli').hide();
+    $('.take').show();
+    $('.cafe').hide();
     service.nearbySearch({
     location: pyrmont,
     radius: 1000,
@@ -85,6 +105,12 @@ $('#llevar').click(function() {
 });
 
 $('#cafe').click(function() {
+    $('.inicial').hide();
+    $('.rest').hide();
+    $('.bake').hide();
+    $('.deli').hide();
+    $('.take').hide();
+    $('.cafe').show();
     service.nearbySearch({
     location: pyrmont,
     radius: 1000,
@@ -109,8 +135,7 @@ function createMarker(place) {
   });
 
  google.maps.event.addListener(marker, 'click', function() {
-              infowindow.setContent('<div><strong>' + place.name + '</strong></div>');
-              infowindow.open(map, this);
+              infowindow.setContent($("#myModal").modal());
   });
 } 
 
@@ -123,5 +148,4 @@ function createMarker(place) {
   buscar();  
 }
 
-
-  
+ 
