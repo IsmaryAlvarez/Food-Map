@@ -1,3 +1,7 @@
+/**
+ * Función centrado de imagen en vista splash
+ */
+
 $.fn.center = function () {
   this.css("position","absolute");
   this.css("top", Math.max(0, (
@@ -11,6 +15,9 @@ $.fn.center = function () {
   return this;
 }
 
+/**
+ * cargado de función vista splash
+ */
 $("#overlay").show();
 $("#overlay-content").show().center();
 
@@ -18,7 +25,21 @@ setTimeout(function(){
   $("#overlay").fadeOut();
 }, 2000);
 
+/**
+ * Función circulo vista splash
+ */
+$('#circle').circleProgress({
+ value: 1,
+ fill: {gradient: [['#e78016', .5], ['#fbbd00', .5]], gradientAngle: Math.PI / 4}
 
+}).on('circle-animation-progress', function(event, progress, stepValue) {
+  $(this).find('strong').text(stepValue.toFixed(2).substr(1));
+  
+});
+
+/**
+ * Función ubicación gps
+ */
 function initMap() {
   var map = new google.maps.Map(document.getElementById("map"), {
     zoom: 5,
@@ -52,6 +73,21 @@ function initMap() {
   infowindow = new google.maps.InfoWindow();
   var service = new google.maps.places.PlacesService(map);
 
+$('.col-sm-4').mouseover(function () {
+  $('.col-sm-4').css("background-color", "yellow");
+}).mouseout(function () {
+    $('.col-sm-4').css("background-color", "red");
+});
+
+$('.col-sm-6').mouseover(function () {
+  $('.col-sm-6').css("background-color", "blue");
+}).mouseout(function () {
+    $('.col-sm-6').css("background-color", "green");
+});
+
+/**
+ * Filtros e imágenes
+ */
 $('#restaurantes').click(function(showrest) {
     $('.inicial').hide();
     $('.rest').show();
